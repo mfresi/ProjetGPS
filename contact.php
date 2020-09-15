@@ -1,3 +1,12 @@
+<?php
+
+include ("class_contact.php");
+if(isset($_POST['submitMail'])){
+    $mail = new Contact($_POST['email'], $_POST['prenom'], $_POST['nom'], $_POST['tel'], $_POST['message']);
+    $testMail = $mail->tests();
+}
+?>
+
 <html>
     <head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -23,8 +32,8 @@
                 </div>
                 <h5>Nous contacter</h5>
                 <?php
-                    if(isset($test)){
-                        $login->erreur($test);
+                    if(isset($testMail)){
+                        $mail->erreur($testMail);
                     }
                 ?>
                 <form action="" method="post">
@@ -52,7 +61,7 @@
                     </div>
                     <div class="row">
                         <div class="right-align">
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Allons-y !
+                            <button class="btn waves-effect waves-light" type="submit" name="submitMail">Allons-y !
                                 <i class="material-icons right">send</i>
                             </button>
                         </div>
