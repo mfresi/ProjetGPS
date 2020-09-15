@@ -20,7 +20,7 @@ if(isset($_POST['submitMail'])){
                 <a href="index.php" class="brand-logo"><i class="material-icons">directions_boat</i>GeoBoat</a>
                 <ul id="nav-mobile" class="right">
                 <li><a href="index.php">Accueil</a></li>
-                <li><a href="">Qu'est ce que GeoBoat?</a></li>
+                <li><a href="presentation.php">Qu'est ce que GeoBoat?</a></li>
                 <li><a href="ekip.php">L'équipe</a></li>
                 <li class="active"><a href="">Contact</a></li>
                 </ul>

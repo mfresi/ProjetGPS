@@ -15,14 +15,13 @@
             registerForm.style.display = "none";
         }
     }
-
 </script>
 
 <?php
     include("class_register.php");
     include("class_login.php");
     if(isset($_POST['submitRegister'])){
-        $register = new Register($_POST['emailRegister'], $_POST['mdpRegister'], $_POST['mdpconfirmRegister']);
+        $register = new Register($_POST['emailRegister'], $_POST['mdpRegister'], $_POST['mdpconfirmRegister'], $_POST['nom'], $_POST['prenom']);
         $testRegister = $register->tests();
     }
     if(isset($_POST['submitLogin'])){
@@ -44,14 +43,14 @@
                 <a href="" class="brand-logo"><i class="material-icons">directions_boat</i>GeoBoat</a>
                 <ul id="nav-mobile" class="right">
                 <li class="active"><a href="">Accueil</a></li>
-                <li><a href="">Qu'est ce que GeoBoat?</a></li>
+                <li><a href="presentation.php">Qu'est ce que GeoBoat?</a></li>
                 <li><a href="ekip.php">L'équipe</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 </ul>
             </div>
         </nav>
         <div class="white container z-depth-3" style="min-height:50vh;">
-            <div class="container" style="margin-top : 10%; padding-top : 5%">
+            <div class="container" style="margin-top : 10%; padding-top : 5%; padding-bottom : 5%;">
                 <div class="row">
                     <div class="col s6">
                         <h3 style="margin-top:30%;"><i class="large material-icons">directions_boat</i>GeoBoat</h3>
@@ -121,6 +120,16 @@
                                         <div class="input-field col s6">
                                             <input id="mdpconfirmRegister" name="mdpconfirmRegister" type="password" class="validate">
                                             <label for="mdpconfirmRegister">Confirmer mot de passe</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input id="nom" name="nom" type="text" class="validate">
+                                            <label for="nom">Nom</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input id="prenom" name="prenom" type="text" class="validate">
+                                            <label for="prenom">Prenom</label>
                                         </div>
                                     </div>
                                     <div class="row">
