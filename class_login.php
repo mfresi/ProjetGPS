@@ -11,7 +11,16 @@
         public function tests(){
             if (filter_var($this->_email, FILTER_VALIDATE_EMAIL)) {
                 if(!empty($this->_mdp)){
-                    $this->testBDD();
+                    $bdd = new PDO('mysql:host=localhost; dbname=geoboat; charset=utf8', 'root', '');
+                    $requeteUser = $bdd->prepare("SELECT * FROM user WHERE email = ? AND password = ?");
+                    $requeteUser->execute(array($this->_email, $this->_mdp));
+                    $userExist = $requeteUser->rowCount();
+                    if($userExist == 1){  
+                        return "succes";
+                    }
+                    else{
+                        return "userNoExist";
+                    }
                 }
                 else{
                     return "mdpVide";
@@ -24,15 +33,17 @@
 
         public function erreur($erreur){
             if($erreur == "mailInvalide"){
-                echo "<p class='red-text'>L'adresse e-mail est incorrecte</p>";
+                echo "<p class='red-text'>L'adresse e-mail est invalide</p>";
             }
             if($erreur == "mdpVide"){
                 echo "<p class='red-text'>Merci de remplir le champ mot de passe</p>";
             }
-        }
-
-        public function testBDD(){
-            
+            if($erreur == "userNoExist"){
+                echo "<p class='red-text'>E-mail ou mot de passe incorrect</p>";
+            }
+            if($erreur == "succes"){
+                echo "<p class='green-text'>Connecté!</p>";
+            }
         }
     }
 ?>

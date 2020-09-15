@@ -11,18 +11,17 @@
                 <a href="index.php" class="brand-logo"><i class="material-icons">directions_boat</i>GeoBoat</a>
                 <ul id="nav-mobile" class="right">
                 <li><a href="index.php">Accueil</a></li>
-                <li><a href="presentation.php">Qu'est ce que GeoBoat?</a></li>
-                <li class="active"><a href="">L'équipe</a></li>
+                <li class="active"><a href="">Qu'est ce que GeoBoat?</a></li>
+                <li><a href="ekip.php">L'équipe</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 </ul>
             </div>
         </nav>
         <div class="white container z-depth-3" style="min-height:50vh;">
-            <div class="container" style="margin-top:10%;padding-top:5%;">
-                <h5 class="center-align">L'équipe</h5>
-                <p class="center-align">Nous sommes une équipe de 3 étudiants en 2ème année de BTS SN à La Providence située à Amiens. </p>
-            </div>
-            <div class="container" style="padding-bottom : 50%; margin-bottom : 10%; background-image: url('images/ekip.png');background-position: center center;background-size: cover;">
+            <div class="container" style="margin-top : 10%; padding-top : 5%; padding-bottom : 5%; margin-bottom : 10%;">
+                <div class="center-align">
+                    <i class="large material-icons">directions_boat</i><h5>Présentation de GeoBoat</h5>
+                </div>
                 
             </div>
         </div>

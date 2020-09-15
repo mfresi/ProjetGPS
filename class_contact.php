@@ -44,10 +44,6 @@
             }
         }
 
-        public function testBDD(){
-            
-        }
-
         public function sendMail($message) {
             $retour = mail('mattei.fresi@hotmail.fr', 'Envoi depuis la page Contact', $message, 'From : support@geoboat.fr');
             if ($retour) {
