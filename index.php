@@ -21,6 +21,7 @@
 </script>
 
 <?php
+//  A commenter ! 
     include("class_register.php");
     include("class_login.php");
     if(isset($_POST['submitRegister'])){
