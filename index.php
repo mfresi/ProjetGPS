@@ -1,4 +1,5 @@
 <script type="text/javascript">
+// fonction qui permet de cacher de le formulaire d'inscription
     function displayRegister(){
         var loginForm = document.getElementById("loginForm");
         var registerForm = document.getElementById("registerForm");
