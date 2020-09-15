@@ -8,6 +8,7 @@
             registerForm.style.display = "block";
         }
     }
+    // Fonction qui permet de cacher le formulaire de connexion
     function displayLogin(){
         var loginForm = document.getElementById("loginForm");
         var registerForm = document.getElementById("registerForm");
