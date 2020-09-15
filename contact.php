@@ -3,6 +3,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="UTF-8">
     </head>
     <body style="background-image: url('images/background.jpg');background-attachment: fixed;background-position: center center;">
         <nav>
@@ -11,7 +12,7 @@
                 <ul id="nav-mobile" class="right">
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="">Qu'est ce que GeoBoat?</a></li>
-                <li><a href="">L'equipe</a></li>
+                <li><a href="ekip.php">L'équipe</a></li>
                 <li class="active"><a href="">Contact</a></li>
                 </ul>
             </div>
@@ -21,7 +22,7 @@
                 <div class="center-align">
                     <i class="large material-icons">contact_mail</i>
                 </div>
-                <h5>Nous contacter</h5>
+                <h5>Nous contacter</h5><p class="grey-text darken-1">(Nous vous répondrons dans les plus brefs délais)</p>
                 <?php
                     if(isset($test)){
                         $login->erreur($test);
@@ -34,7 +35,7 @@
                     </div>
                     <div class="input-field center-align">
                         <input id="prenom" name="prenom" type="text" class="validate">
-                        <label for="prenom">Prenom</label>
+                        <label for="prenom">Prénom</label>
                     </div>
                     <div class="input-field center-align">
                         <i class="material-icons prefix">email</i>
@@ -44,7 +45,7 @@
                     <div class="input-field center-align">
                         <i class="material-icons prefix">phone</i>
                         <input id="tel" name="tel" type="text" class="validate">
-                        <label for="tel">Numero de telephone</label>
+                        <label for="tel">Numéro de téléphone</label>
                     </div>
                     <div class="input-field center-align">
                         <textarea id="message" name="message" class="materialize-textarea"></textarea>
