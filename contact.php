@@ -4,6 +4,7 @@ include ("class_contact.php");
 if(isset($_POST['submitMail'])){
     $mail = new Contact($_POST['email'], $_POST['prenom'], $_POST['nom'], $_POST['tel'], $_POST['message']);
     $testMail = $mail->tests();
+    //$sendEmail = $mail->sendMail($_Post['message']); appel de la fonction pour envoyer un mail à l'utilisateur.
 }
 ?>
 

@@ -40,7 +40,7 @@
                 echo "<p class='red-text'>E-mail invalide !</p>";
             }
             if($erreur == "emailSend"){
-                echo "<p class='red-text'>L'email à bien été envoyé !</p>";
+                echo "<p class='red-text'>L'email a bien ete envoye !</p>";
             }
         }
 
