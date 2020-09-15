@@ -4,7 +4,7 @@
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
-    <body style="background-image: url('images/background.jpg');">
+    <body style="background-image: url('images/background.jpg');background-attachment: fixed;background-position: center center;">
         <nav>
             <div class="nav-wrapper">
                 <a href="index.php" class="brand-logo"><i class="material-icons">directions_boat</i>GeoBoat</a>
@@ -17,7 +17,7 @@
             </div>
         </nav>
         <div class="white container z-depth-3" style="min-height:50vh;">
-            <div class="container" style="margin-top : 10%; padding-top : 5%; padding-bottom : 5%;">
+            <div class="container" style="margin-top : 10%; padding-top : 5%; padding-bottom : 5%; margin-bottom : 10%;">
                 <div class="center-align">
                     <i class="large material-icons">contact_mail</i>
                 </div>

@@ -37,7 +37,7 @@
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
-    <body style="background-image: url('images/background.jpg');">
+    <body style="background-image: url('images/background.jpg');background-attachment: fixed;background-position: center center;">
         <nav>
             <div class="nav-wrapper">
                 <a href="" class="brand-logo"><i class="material-icons">directions_boat</i>GeoBoat</a>
