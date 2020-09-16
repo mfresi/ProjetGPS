@@ -1,4 +1,5 @@
 <?php
+    // Class formulaire de contact
     class Contact{
         private $_email;
         private $_prenom;

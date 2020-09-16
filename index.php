@@ -1,4 +1,5 @@
 <script type="text/javascript">
+// fonction qui permet de cacher de le formulaire d'inscription
     function displayRegister(){
         var loginForm = document.getElementById("loginForm");
         var registerForm = document.getElementById("registerForm");
@@ -7,6 +8,7 @@
             registerForm.style.display = "block";
         }
     }
+    // Fonction qui permet de cacher le formulaire de connexion
     function displayLogin(){
         var loginForm = document.getElementById("loginForm");
         var registerForm = document.getElementById("registerForm");
@@ -19,6 +21,7 @@
 </script>
 
 <?php
+//  A commenter ! 
     include("class_register.php");
     include("class_login.php");
     if(isset($_POST['submitRegister'])){

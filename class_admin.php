@@ -1,17 +1,17 @@
 <?php
 class Admin
 {
+    private $_bdd;
+
+    public function __construct(){
+        $this->_bdd = new PDO('mysql:host=localhost; dbname=geoboat; charset=utf8', 'root', '');
+    }
+
     public function afficheUser()
     {
-
-        $bdd = new PDO('mysql:host=localhost; dbname=geoboat; charset=utf8', 'root', '');
-        $response = $bdd->query("SELECT * FROM user ");
+        $response = $this->_bdd->query("SELECT * FROM user ");
         while ($donneesBrutes = $response->fetch()) {
-            echo "<tr><td>" . $donneesBrutes['nom'] . "</td>";
-            echo "<td>" . $donneesBrutes['prenom'] . "</td>";
-            echo "<td>" . $donneesBrutes['email'] . "</td>";
-            echo "<td>" . $donneesBrutes['droit'] . "</td>";
-            echo "<td>" . $donneesBrutes['password'] . "</td></tr>";
+            echo "<option value='".$donneesBrutes['id_user']."'>".$donneesBrutes['nom']." ".$donneesBrutes['prenom']."</option>";
         }
     }
 
@@ -29,5 +29,75 @@ class Admin
         if ($erreur == "succes") {
             echo "<p class='green-text'>Connecté!</p>";
         }
+    }
+
+    public function choixUser($id){
+        $requeteUserAModifier = $this->_bdd->query("SELECT * FROM user WHERE id_user = ".$id);
+        $donneesUserAModifier = $requeteUserAModifier->fetch();
+        return $donneesUserAModifier;
+    }
+
+    public function champUser($dataUser){
+        echo "
+        <form method='post' action=''>
+            <input type='hidden' name='iduser' value='".$dataUser['id_user']."'>
+            <div class='input-field center-align'>
+                <input id='email' name='email' type='text' value='".$dataUser['email']."' class='validate'>
+                <label for='email'>E-mail</label>
+            </div>
+            <div class='row'>
+                <div class='col s6'>
+                    <p>
+                        <label>
+                            <input name='droits' type='radio' value='ADMIN'";
+                            if($dataUser['droit'] == "ADMIN"){echo "checked";}
+                            echo " />
+                            <span>Administrateur</span>
+                        </label>
+                    </p>
+                </div>
+                <div class='col s6'>
+                    <p>
+                        <label>
+                            <input name='droits' type='radio' value='USER'";
+                            if($dataUser['droit'] == "USER"){echo "checked";}
+                            echo " />
+                            <span>Utilisateur</span>
+                        </label>
+                    </p>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='input-field col s6'>
+                    <input id='nom' name='nom' type='text' value='".$dataUser['nom']."' class='validate'>
+                    <label for='nom'>Nom</label>
+                </div>
+                <div class='input-field col s6'>
+                    <input id='prenom' name='prenom' type='text' value='".$dataUser['prenom']."' class='validate'>
+                    <label for='prenom'>Prenom</label>
+                </div>
+            </div>
+            <div class='row valign-wrapper center-align'>
+                <div class='input-field col s6 left-align'>
+                    <button class='btn waves-effect waves-light' type='submit' name='supprimerUser'>Supprimer
+                        <i class='material-icons right'>delete_forever</i>
+                    </button>
+                </div>
+                <div class='input-field col s6 right-align'>
+                    <button class='btn waves-effect waves-light' type='submit' name='modifierUser'>Modifier
+                        <i class='material-icons right'>edit</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        ";
+    }
+
+    public function modifier($id,$email,$nom,$prenom,$droits){
+        $requeteModification = $this->_bdd->query("UPDATE user SET `nom`='".$nom."',`prenom`='".$prenom."',`email`='".$email."',`droit`='".$droits."' WHERE id_user = ".$id);
+    }
+
+    public function supprimer($id){
+        $requeteSuppression = $this->_bdd->query("DELETE FROM user WHERE id_user = ".$id);
     }
 }
