@@ -57,10 +57,10 @@ class Register{
             echo "<p class='red-text'>L'adresse e-mail est incorrecte</p>";
         }
         if($erreur == "mdpVide"){
-            echo "<p class='red-text'>Merci de remplir le champ Mot de passe</p>";
+            echo "<p class='red-text'>Merci de remplir le champ mot de passe</p>";
         }
         if($erreur == "nomPrenomVide"){
-            echo "<p class='red-text'>Merci de remplir les champs Nom et Prenom</p>";
+            echo "<p class='red-text'>Merci de remplir les champs nom et prenom</p>";
         }
         if($erreur == "mailUsed"){
             echo "<p class='red-text'>Adresse e-mail déjà utilisée</p>";
