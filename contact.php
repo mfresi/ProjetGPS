@@ -64,7 +64,7 @@ if(isset($_POST['submitMail'])){
                     </div>
                     <div class="row">
                         <div class="right-align">
-                            <button class="btn waves-effect waves-light" type="submit" name="submitMail">Allons-y !
+                            <button class="btn waves-effect waves-light" type="submit" name="submitMail">Envoyer !
                                 <i class="material-icons right">send</i>
                             </button>
                         </div>
