@@ -26,11 +26,28 @@
     <div class="white container z-depth-3" style="min-height:50vh;">
         <div class="container" style="margin-top : 10%; padding-top : 5%; padding-bottom : 5%; margin-bottom : 10%;">
             <div class="center-align">
-                <select class="browser-default">
-                    <option value="" disabled selected>nom des propriètaires du bateau</option>
-                    <option value="1"><?php $name = $bateau->afficherName()?></option>
-                </select>
+                <h5>Utilisateur</h5>
             </div>
+            <div class="row">
+                <form method="post" action="">
+                    <div class="row valign-wrapper center-align">
+                        <div class="input-field col s8">
+                            <select class="browser-default" name="selectUser">
+                                <option value="" disabled selected>Choisissez un utilisateur</option>
+                                <?php $bateau->afficherUser() ?>
+                            </select>
+                        </div>
+                        <div class="input-field col s4">
+                            <button class="btn waves-effect waves-light" type="submit" name="submitUser">Choisir</button>
+                        </div>
+                    </div> 
+                </form>
+            </div>
+        <?php    
+            if(isset($_POST['submitUser'])){
+                $bateau->AfficherBateau($_POST['selectUser']);
+            }
+        ?>
         </div>
     </div>
     <script type="text/javascript" src="js/materialize.min.js"></script>

@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 16 Septembre 2020 à 13:05
+-- Généré le :  Mer 16 Septembre 2020 à 13:38
 -- Version du serveur :  5.6.15-log
--- Version de PHP :  5.4.24
+-- Version de PHP :  5.5.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,25 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `geoboat`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `assoc_bateau-user`
+--
+
+CREATE TABLE IF NOT EXISTS `assoc_bateau-user` (
+  `id_user` int(50) NOT NULL,
+  `id_bateau` int(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `assoc_bateau-user`
+--
+
+INSERT INTO `assoc_bateau-user` (`id_user`, `id_bateau`) VALUES
+(1, 2),
+(2, 1);
 
 -- --------------------------------------------------------
 
