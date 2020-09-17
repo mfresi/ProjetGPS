@@ -31,6 +31,7 @@ if(isset($_POST['submitModifier'])){
     </nav>
     <div class="white container z-depth-3" style="min-height:50vh;">
         <div class="container" style="margin-top : 10%; padding-top : 5%; padding-bottom : 5%; margin-bottom : 10%;">
+            <a href="bateau_admin.php">Voir les bateaux des utilisateurs</a>
             <div class="center-align">
                 <h5>Page d'administration</h5>
             </div>
