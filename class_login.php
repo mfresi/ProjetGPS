@@ -49,5 +49,6 @@
                 echo "<p class='green-text'>Connecté!</p>";
             }
         }
+
     }
 ?>
