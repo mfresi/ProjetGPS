@@ -32,22 +32,24 @@
         <div class="nav-wrapper">
             <a href="index.php" class="brand-logo"><i class="material-icons">directions_boat</i>GeoBoat</a>
             <ul id="nav-mobile" class="right">
-                <li class="active"><a href="">Tableau de bord</a></li>
-                <li><a href="">Documentation</a></li>
-                <?php
-                    if($_SESSION['droits'] == "ADMIN"){
-                        echo "<li><a href='admin.php'>Admin</a></li>";
-                    }
-                ?>
-                <li><a href="contact.php">Contact</a></li>
-                <li><a href="">Modifier mon compte</a></li>
-                <li><a href=""><i class="material-icons">power_settings_new</i></a></li>
+                <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == true){ ?>
+                    <li class="active"><a href="">Tableau de bord</a></li>
+                    <li><a href="">Documentation</a></li>
+                    <?php
+                        if($_SESSION['droits'] == "ADMIN"){
+                            echo "<li><a href='admin.php'>Admin</a></li>";
+                        }
+                    ?>
+                    <li><a href="contact.php">Contact</a></li>
+                    <li><a href="">Modifier mon compte</a></li>
+                    <li><a href="deconnexion.php"><i class="material-icons">power_settings_new</i></a></li>
+                    <?php } ?>
             </ul>
         </div>
     </nav>
     <div class="white container z-depth-3" style="min-height:50vh;">
         <div style="margin-top:10%;padding-top:5%;">
-            <?php if($_SESSION['logged'] == true){ ?>
+            <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == true){ ?>
             <div class="row">
                 <div class="col s6 center-align">
                     <?php $tablo2bord->bienvenueUser($_SESSION['id']); ?>

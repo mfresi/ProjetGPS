@@ -59,14 +59,12 @@
                     echo "      <td>".$donneesBateau['vitesse']." km/h</td>";
                 }
                 if(!empty($donneesBateau['longitude'])){
-                    echo "      <td>".$donneesBateau['longitude']." km/h</td>";
+                    echo "      <td>".$donneesBateau['longitude']."</td>";
                 }
                 if(!empty($donneesBateau['latitude'])){
-                    echo "      <td>".$donneesBateau['latitude']." km/h</td>";
+                    echo "      <td>".$donneesBateau['latitude']."</td>";
                 }
                 echo "
-                                <td>".$donneesBateau['longitude']."</td>
-                                <td>".$donneesBateau['latitude']."</td>
                             </tr>
                         </tbody>
                     </table>

@@ -21,16 +21,20 @@ if(isset($_POST['submitModifier'])){
         <div class="nav-wrapper">
             <a href="index.php" class="brand-logo"><i class="material-icons">directions_boat</i>GeoBoat</a>
             <ul id="nav-mobile" class="right">
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="presentation.php">Qu'est ce que GeoBoat?</a></li>
-                <li><a href="ekip.php">L'équipe</a></li>
+            <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == true && $_SESSION['droits'] == "ADMIN"){ ?>
+                <li><a href="tableau_de_bord.php">Tableau de bord</a></li>
+                <li><a href="">Documentation</a></li>
+                <li class="active"><a href='admin.php'>Admin</a></li>
                 <li><a href="contact.php">Contact</a></li>
-                <li class="active"><a href="">Admin</a></li>
+                <li><a href="">Modifier mon compte</a></li>
+                <li><a href=""><i class="material-icons">power_settings_new</i></a></li>
+            <?php } ?>
             </ul>
         </div>
     </nav>
     <div class="white container z-depth-3" style="min-height:50vh;">
         <div class="container" style="margin-top : 10%; padding-top : 5%; padding-bottom : 5%; margin-bottom : 10%;">
+            <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == true && $_SESSION['droits'] == "ADMIN"){ ?>
             <a href="bateau_admin.php">Voir les bateaux des utilisateurs</a>
             <div class="center-align">
                 <h5>Page d'administration</h5>
@@ -58,7 +62,12 @@ if(isset($_POST['submitModifier'])){
             } 
             if(isset($_POST['supprimerUser'])){
                 $admin->supprimer($_POST['iduser']);
-            }?>
+            }
+        } else{
+            echo "<div class='center-align'>
+                <h3>Vous vous êtes visiblement perdu, revenez à <a href='index.php'>l'accueil</a></h3>
+                </div>";
+        }?>
         </div>
     </div>
     <script type="text/javascript" src="js/materialize.min.js"></script>

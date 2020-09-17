@@ -17,6 +17,7 @@
                     $userExist = $requeteUser->rowCount();
                     if($userExist == 1){  
                         $donneesUser = $requeteUser->fetch();
+                        session_start();
                         $_SESSION['logged'] = true;
                         $_SESSION['id'] = $donneesUser['id_user'];
                         $_SESSION['droits'] = $donneesUser['droit'];

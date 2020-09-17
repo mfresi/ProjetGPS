@@ -15,16 +15,20 @@
         <div class="nav-wrapper">
             <a href="index.php" class="brand-logo"><i class="material-icons">directions_boat</i>GeoBoat</a>
             <ul id="nav-mobile" class="right">
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="">Qu'est ce que GeoBoat?</a></li>
-                <li><a href="ekip.php">L'équipe</a></li>
-                <li><a href="contact.php">Contact</a></li>
-                <li><a href="admin.php">Admin</a></li>
+                <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == true && $_SESSION['droits'] == "ADMIN"){ ?>
+                    <li><a href="tableau_de_bord.php">Tableau de bord</a></li>
+                    <li><a href="">Documentation</a></li>
+                    <li class="active"><a href='admin.php'>Admin</a></li>
+                    <li><a href="contact.php">Contact</a></li>
+                    <li><a href="">Modifier mon compte</a></li>
+                    <li><a href=""><i class="material-icons">power_settings_new</i></a></li>
+                <?php } ?>
             </ul>
         </div>
     </nav>
     <div class="white container z-depth-3" style="min-height:50vh;">
         <div class="container" style="margin-top : 10%; padding-top : 5%; padding-bottom : 5%; margin-bottom : 10%;">
+            <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == true && $_SESSION['droits'] == "ADMIN"){ ?>
             <a href="admin.php"><i class="material-icons">arrow_back</i>Retour à la page d'administration</a>
             <div class="center-align">
                 <h5>Bateaux des utilisateurs</h5>
@@ -44,6 +48,11 @@
                     </div> 
                 </form>
             </div>
+            <?php } else{
+                echo "<div class='center-align'>
+                <h3>Vous vous êtes visiblement perdu, revenez à <a href='index.php'>l'accueil</a></h3>
+                </div>";
+            } ?>
         <?php    
             if(isset($_POST['submitUser'])){
                 $bateau->afficherBateau($_POST['selectUser']);
