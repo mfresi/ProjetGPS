@@ -19,8 +19,8 @@
                         $donneesUser = $requeteUser->fetch();
                         $_SESSION['logged'] = true;
                         $_SESSION['id'] = $donneesUser['id_user'];
-                        $_SESSION['droits'] = $donneesUser['id_user'];
-                        return "succes";
+                        $_SESSION['droits'] = $donneesUser['droit'];
+                        header('Location: tableau_de_bord.php');
                     }
                     else{
                         return "userNoExist";

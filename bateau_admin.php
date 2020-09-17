@@ -46,7 +46,7 @@
             </div>
         <?php    
             if(isset($_POST['submitUser'])){
-                $bateau->AfficherBateau($_POST['selectUser']);
+                $bateau->afficherBateau($_POST['selectUser']);
             }
         ?>
         </div>

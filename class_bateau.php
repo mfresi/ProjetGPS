@@ -14,9 +14,12 @@ class bateau
         }
     }
     public function afficherBateau($iduser){
-        $requeteBateau = $this->_bdd->query("SELECT * FROM `bateau` INNER JOIN `assoc_bateau-user` ON `bateau`.id_bateau = `assoc_bateau-user`.id_bateau AND `assoc_bateau-user`.id_user = ".$iduser);
-        $donneesBateau = $requeteBateau->fetch();
-        if($donneesBateau != NULL){
+        $requeteUserExist = $this->_bdd->prepare("SELECT * FROM assoc_bateau-user WHERE id_user = ?");
+        $requeteUserExist->execute(array($iduser));
+        $userExist = $requeteUserExist->rowCount();
+        if($userExist == 1){  
+            $requeteBateau = $this->_bdd->query("SELECT * FROM `bateau` INNER JOIN `assoc_bateau-user` ON `bateau`.id_bateau = `assoc_bateau-user`.id_bateau AND `assoc_bateau-user`.id_user = ".$iduser);
+            $donneesBateau = $requeteBateau->fetch();
             echo "
             <div class='center-align'>
                 <h5>Bateau<i class='material-icons'>directions_boat</i></h5>
