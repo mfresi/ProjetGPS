@@ -25,8 +25,9 @@
     </nav>
     <div class="white container z-depth-3" style="min-height:50vh;">
         <div class="container" style="margin-top : 10%; padding-top : 5%; padding-bottom : 5%; margin-bottom : 10%;">
+            <a href="admin.php"><i class="material-icons">arrow_back</i>Retour à la page d'administration</a>
             <div class="center-align">
-                <h5>Utilisateur</h5>
+                <h5>Bateaux des utilisateurs</h5>
             </div>
             <div class="row">
                 <form method="post" action="">
