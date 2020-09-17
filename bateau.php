@@ -20,6 +20,7 @@
                 <li><a href="ekip.php">L'équipe</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="admin.php">Admin</a></li>
+                <li><a href="">Deconnexion</a></li>
             </ul>
         </div>
     </nav>
@@ -28,7 +29,7 @@
             <div class="center-align">
                 <select class="browser-default">
                     <option value="" disabled selected>nom des propriètaires du bateau</option>
-                    <option value="1"><?php $name = $bateau->afficherName()?></option>
+                    <option value="1"><?php $bateau->afficherName()?></option>
                 </select>
             </div>
         </div>

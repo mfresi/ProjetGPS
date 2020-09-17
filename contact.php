@@ -25,6 +25,7 @@ if(isset($_POST['submitMail'])){
                 <li><a href="ekip.php">L'équipe</a></li>
                 <li class="active"><a href="">Contact</a></li>
                 <li><a href="admin.php">Admin</a></li>
+                <li><a href="">Deconnexion</a></li>
                 </ul>
             </div>
         </nav>

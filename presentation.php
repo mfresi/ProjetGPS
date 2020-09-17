@@ -15,6 +15,7 @@
                 <li><a href="ekip.php">L'équipe</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="admin.php">Admin</a></li>
+                <li><a href="">Deconnexion</a></li>
                 </ul>
             </div>
         </nav>

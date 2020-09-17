@@ -26,6 +26,8 @@ if(isset($_POST['submitModifier'])){
                 <li><a href="ekip.php">L'équipe</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <li class="active"><a href="">Admin</a></li>
+                <li><a href="">Deconnexion</a></li>
+
             </ul>
         </div>
     </nav>
