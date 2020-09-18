@@ -1,23 +1,23 @@
 <?php
-class bateau
+class bateau //Class pour les bateaux dans la page admin
 {
     private $_bdd;
 
     public function __construct(){
         $this->_bdd = new PDO('mysql:host=localhost; dbname=geoboat; charset=utf8', 'root', '');
     }
-    public function afficherUser()
+    public function afficherUser() //Fonction permettant d'afficher les utilisateurs dans le tableau
     {
         $response = $this->_bdd->query("SELECT * FROM user");
         while ($donneesBrutes = $response->fetch()) {
             echo "<option value='".$donneesBrutes['id_user']."'>".$donneesBrutes['nom']." ".$donneesBrutes['prenom']."</option>";
         }
     }
-    public function afficherBateau($iduser){
+    public function afficherBateau($iduser){ //Fonction affichant les données du bateau associé à l'utilisateur choisi dans un tableau
         $requeteUserExist = $this->_bdd->prepare("SELECT * FROM `assoc_bateau-user` WHERE id_user = ?");
         $requeteUserExist->execute(array($iduser));
-        $userExist = $requeteUserExist->rowCount();
-        if($userExist == 1){  
+        $userExist = $requeteUserExist->rowCount(); //Test si l'utilisateur a un bateau associé ou non
+        if($userExist == 1){  //Si oui on affiche le tableau, sinon on affiche rien
             $requeteBateau = $this->_bdd->query("SELECT * FROM `bateau` INNER JOIN `assoc_bateau-user` ON `bateau`.id_bateau = `assoc_bateau-user`.id_bateau AND `assoc_bateau-user`.id_user = ".$iduser);
             $donneesBateau = $requeteBateau->fetch();  
             echo "

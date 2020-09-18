@@ -1,5 +1,5 @@
 <?php
-    class Login{
+    class Login{ //Class pour la page de connexion
         private $_email;
         private $_mdp;
 
@@ -8,14 +8,14 @@
             $this->_mdp = $mdp;
         }
 
-        public function tests(){
+        public function tests(){ //Fonction vérifiant si les champs sont remplis correctement
             if (filter_var($this->_email, FILTER_VALIDATE_EMAIL)) {
                 if(!empty($this->_mdp)){
                     $bdd = new PDO('mysql:host=localhost; dbname=geoboat; charset=utf8', 'root', '');
                     $requeteUser = $bdd->prepare("SELECT * FROM user WHERE email = ? AND password = ?");
                     $requeteUser->execute(array($this->_email, $this->_mdp));
                     $userExist = $requeteUser->rowCount();
-                    if($userExist == 1){  
+                    if($userExist == 1){ //Test vérifiant si l'utilisateur correspondant aux coordonnées rentrées par l'utilisateur existe
                         $donneesUser = $requeteUser->fetch();
                         session_start();
                         $_SESSION['logged'] = true;
@@ -36,7 +36,7 @@
             }
         }
 
-        public function erreur($erreur){
+        public function erreur($erreur){ //Fonction affichant l'erreur dans le formulaire si erreur il y a
             if($erreur == "mailInvalide"){
                 echo "<p class='red-text'>L'adresse e-mail est invalide</p>";
             }

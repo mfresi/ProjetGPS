@@ -1,5 +1,5 @@
 <?php
-    class tablo2bord{
+    class tablo2bord{ //Class pour le tableau de bord
 
         private $_bdd;
 
@@ -7,7 +7,7 @@
             $this->_bdd = new PDO('mysql:host=localhost; dbname=geoboat; charset=utf8', 'root', '');
         }
 
-        public function bienvenueUser($iduser){
+        public function bienvenueUser($iduser){ //Fonction servant à afficher le message de bienvenue en fonction du prénom de l'utilisateur connecté
             $requeteUser = $this->_bdd->query("SELECT * FROM user WHERE id_user = ".$iduser);
             $donneesUser = $requeteUser->fetch();
             echo "
@@ -18,11 +18,11 @@
             ";
         }
 
-        public function bateauInfo($iduser){
+        public function bateauInfo($iduser){ //Fonction affichant les données du bateau associé à l'utilisateur
             $requeteUserExist = $this->_bdd->prepare("SELECT * FROM `assoc_bateau-user` WHERE id_user = ?");
             $requeteUserExist->execute(array($iduser));
             $userExist = $requeteUserExist->rowCount();
-            if($userExist == 1){  
+            if($userExist == 1){ //Test vérifiant si l'utilisateur a un bateau associé à lui
                 $requeteBateau = $this->_bdd->query("SELECT * FROM `bateau` INNER JOIN `assoc_bateau-user` ON `bateau`.id_bateau = `assoc_bateau-user`.id_bateau AND `assoc_bateau-user`.id_user = ".$iduser);
                 $donneesBateau = $requeteBateau->fetch();
                 echo "
@@ -70,7 +70,7 @@
                     </table>
                 ";
             }
-            else{
+            else{ //Si l'utilisateur n'a pas de bateau associé, lui proposer d'ajouter le sien
                 echo "
                     <div class='center-align' id='noBoat'>
                         <p style='margin-top:25%;'>Vous n'avez pas de bateau.</p>
@@ -83,7 +83,7 @@
             }
         }
 
-        public function ajouterBato($nom, $marque, $type,$id){
+        public function ajouterBato($nom, $marque, $type,$id){ //
             $requeteAjoutBato = $this->_bdd->query("INSERT INTO `bateau`(`id_bateau`, `nom`, `marque`, `type`, `vitesse`, `longitude`, `latitude`) VALUES (NULL,'".$nom."','".$marque."','".$type."',NULL,NULL,NULL)");
             $id_bateau = $this->_bdd->lastInsertId();
             $requeteAjoutAssoc = $this->_bdd->query("INSERT INTO `assoc_bateau-user`(`id_user`,`id_bateau`) VALUES ('".$id."','".$id_bateau."')");

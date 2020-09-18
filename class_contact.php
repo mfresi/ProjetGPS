@@ -15,7 +15,7 @@
             $this->_message = $message;
         }
 
-        public function tests(){
+        public function tests(){ //Fonction vérifiant que tous les champs sont bien remplis puis appelant la fonction sendMail
             if (empty($this->_email) || empty($this->_prenom) || empty($this->_nom) || empty($this->_phone) || empty($this->_message)) {
 
                 return "champInvalid";
@@ -33,7 +33,7 @@
             }
         }
 
-        public function erreur($erreur){
+        public function erreur($erreur){ //Fonction affichant l'erreur dans le formulaire si erreur il y a
             if($erreur == "champInvalid"){
                 echo "<p class='red-text'>Merci de remplir tous les champs</p>";
             }
@@ -45,11 +45,8 @@
             }
         }
 
-        public function sendMail($message) {
-            $retour = mail('mattei.fresi@hotmail.fr', 'Envoi depuis la page Contact', $message, 'From : support@geoboat.fr');
-            if ($retour) {
-                echo '<p>Votre message a bien été envoyé.</p>';
-            }
+        public function sendMail($message) { //Fonction envoyant le mail
+            //TODO : ici le code pour envoyer le mail
         }
     }
 ?>

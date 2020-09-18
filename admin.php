@@ -2,6 +2,8 @@
 include("class_admin.php");
 session_start();
 $admin = new Admin;
+
+//Si on appuye sur le boutton Choisir, ca envoie l'utilisateur choisi à la fonction choixUser et ca retourne les données de l'utilisateur choisi
 if(isset($_POST['submitModifier'])){
     $dataUser = $admin->choixUser($_POST['selectUser']);
 }
@@ -17,6 +19,7 @@ if(isset($_POST['submitModifier'])){
 </head>
 
 <body style="background-image: url('images/background.jpg');background-attachment: fixed;background-position: center center;">
+    <!-- Début du header -->
     <nav>
         <div class="nav-wrapper">
             <a href="tableau_de_bord.php" class="brand-logo"><i class="material-icons">directions_boat</i>GeoBoat</a>
@@ -32,9 +35,11 @@ if(isset($_POST['submitModifier'])){
             </ul>
         </div>
     </nav>
+    <!-- Fin du header -->
     <div class="white container z-depth-3" style="min-height:50vh;">
         <div class="container" style="margin-top : 10%; padding-top : 5%; padding-bottom : 5%; margin-bottom : 10%;">
             <?php 
+            //Si l'utilisateur est connecté et il est administrateur, on affiche la page (1/2)
             if(isset($_SESSION['logged']) && $_SESSION['logged'] == true && $_SESSION['droits'] == "ADMIN"){ 
             ?>
                 <a href="bateau_admin.php">Voir les bateaux des utilisateurs</a>
@@ -44,6 +49,7 @@ if(isset($_POST['submitModifier'])){
                 <div class="row">
                     <form method="post" action="">
                         <div class="row valign-wrapper center-align">
+                            <!-- Liste déroulante avec tous les utilisateurs -->
                             <div class="input-field col s8">
                                 <select class="browser-default" name="selectUser">
                                     <option value="" disabled selected>Choisissez un utilisateur à modifier</option>
@@ -56,16 +62,21 @@ if(isset($_POST['submitModifier'])){
                         </div> 
                     </form>
                 </div>
-                <?php if(isset($dataUser)){
+                <?php
+                //Si la variable contenant le tableau de données est set on affiche les champs préremplis avec les données de l'utilisateur choisi
+                if(isset($dataUser)){
                     $admin->champUser($dataUser);
                 }
+                //Si l'utilisateur appuye sur le boutton Modifier, on execute la fonction modifier afin de changer les donnees en base
                 if(isset($_POST['modifierUser'])){
                     $admin->modifier($_POST['iduser'],$_POST['email'], $_POST['nom'], $_POST['prenom'], $_POST['droits']);
                 } 
+                //Si l'utilisateur appuye sur le bouton Supprimer, on execute la fonction supprimer afin de supprimer ses donnees en base
                 if(isset($_POST['supprimerUser'])){
                     $admin->supprimer($_POST['iduser']);
                 }
             } 
+            //Sinon il est redirigé (2/2)
             else{
                 header('Location: 403.php');
             }?>

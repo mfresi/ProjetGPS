@@ -1,5 +1,5 @@
 <?php
-    class modif
+    class modif //Class pour la page Modifier mon compte
     {
         private $_bdd;
     
@@ -7,7 +7,7 @@
             $this->_bdd = new PDO('mysql:host=localhost; dbname=geoboat; charset=utf8', 'root', '');
         }
         
-        public function champUser($iduser){
+        public function champUser($iduser){ //Fonction affichant le formulaire prérempli avec les données de l'utilisateur
             $requeteUser = $this->_bdd->query("SELECT * FROM user WHERE id_user = ".$iduser);
             $dataUser = $requeteUser->fetch();
             echo "
@@ -82,25 +82,25 @@
             ";
         }
 
-        public function modifierUser($iduser, $email, $nom, $prenom, $checkmdp, $mdp, $confirmmdp, $droits, $droitsmodif){
-            if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        public function modifierUser($iduser, $email, $nom, $prenom, $checkmdp, $mdp, $confirmmdp, $droits, $droitsmodif){ //Fonction servant à modifier les données de l'utilisateur en base
+            if (filter_var($email, FILTER_VALIDATE_EMAIL)) { //Test si l'adresse rentrée est une adresse valide
                 $requeteMail = $this->_bdd->prepare("SELECT * FROM user WHERE email = ?");
                 $requeteMail->execute(array($email));
                 $userExist = $requeteMail->rowCount();
                 $requeteAncienMail = $this->_bdd->query("SELECT * FROM user WHERE id_user = ".$iduser);
                 $donneesUser = $requeteAncienMail->fetch();
-                if($userExist == 1 && $email != $donneesUser['email']){  
+                if($userExist == 1 && $email != $donneesUser['email']){  //Test pour savoir si l'email rentré est déjà utilisé par un autre utilisateur
                     echo "<p class='red-text'>Adresse mail déjà utilisée par un autre utilisateur</p>";
                 }
                 else{
-                    if($checkmdp == true){
+                    if($checkmdp == true){ //Si l'utilisateur a coché la case Modifier le mot de passe
                         if(!empty($mdp) && !empty($confirmmdp)){
                             if($mdp == $confirmmdp){
-                                if($droits == 'ADMIN'){
+                                if($droits == 'ADMIN'){//Si c'est un administrateur on défini les droits selon ce qu'il a choisi
                                     $updateDroitEtMdp = $this->_bdd->query("UPDATE user SET `password` = '".$mdp."' `nom`='".$nom."',`prenom`='".$prenom."',`email`='".$email."',`droit`='".$droitsmodif."' WHERE id_user = ".$iduser);
                                     echo "<p class='green-text'>Modifié avec succès</p>";
                                 }
-                                else{
+                                else{ //Si c'est un utilisateur normal on ne change pas les droits
                                     $updateMdp = $this->_bdd->query("UPDATE user SET `password` = '".$mdp."' `nom`='".$nom."',`prenom`='".$prenom."',`email`='".$email."' WHERE id_user = ".$iduser);
                                     echo "<p class='green-text'>Modifié avec succès</p>";
                                 }   
@@ -114,11 +114,11 @@
                         }
                     }
                     else{
-                        if($droits == 'ADMIN'){
+                        if($droits == 'ADMIN'){ //Si l'utilisateur ne souhaite pas modifier son mdp et qu'il est admin
                             $updateDroit = $this->_bdd->query("UPDATE user SET `nom`='".$nom."',`prenom`='".$prenom."',`email`='".$email."',`droit`='".$droitsmodif."' WHERE id_user = ".$iduser);
                             echo "<p class='green-text'>Modifié avec succès</p>";
                         }
-                        else{
+                        else{ //Si l'utilisateur ne souhaite pas modifier son mdp et qu'il n'est pas admin
                             $update = $this->_bdd->query("UPDATE user SET `nom`='".$nom."',`prenom`='".$prenom."',`email`='".$email."' WHERE id_user = ".$iduser);
                             echo "<p class='green-text'>Modifié avec succès</p>";
                         }

@@ -1,3 +1,5 @@
+<!-- Page où l'on est redirigé si on tente d'accéder à une page auquel on est pas autorisé -->
+
 <?php session_start(); ?>
 <html>
 
@@ -9,6 +11,7 @@
 </head>
 
 <body style="background-image: url('images/background.jpg');background-attachment: fixed;background-position: center center;">
+    <!-- Début du header -->
     <nav>
         <div class="nav-wrapper">
             <a href="index.php" class="brand-logo"><i class="material-icons">directions_boat</i>GeoBoat</a>
@@ -16,6 +19,7 @@
             </ul>
         </div>
     </nav>
+    <!-- Fin du header -->
     <div class="white container z-depth-3" style="min-height:50vh;">
         <div style="margin-top:10%;padding-top:5%;">
             <div class='center-align'>

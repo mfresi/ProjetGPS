@@ -1,5 +1,5 @@
 <?php
-class Admin
+class Admin //Class pour la page d'administration
 {
     private $_bdd;
 
@@ -7,37 +7,21 @@ class Admin
         $this->_bdd = new PDO('mysql:host=localhost; dbname=geoboat; charset=utf8', 'root', '');
     }
 
-    public function afficheUser()
+    public function afficheUser() //Fonction permettant d'afficher les utilisateurs dans le tableau
     {
         $response = $this->_bdd->query("SELECT * FROM user ");
         while ($donneesBrutes = $response->fetch()) {
             echo "<option value='".$donneesBrutes['id_user']."'>".$donneesBrutes['nom']." ".$donneesBrutes['prenom']."</option>";
         }
     }
-
-    public function erreur($erreur)
-    {
-        if ($erreur == "mailInvalide") {
-            echo "<p class='red-text'>L'adresse e-mail est invalide</p>";
-        }
-        if ($erreur == "mdpVide") {
-            echo "<p class='red-text'>Merci de remplir le champ mot de passe</p>";
-        }
-        if ($erreur == "userNoExist") {
-            echo "<p class='red-text'>E-mail ou mot de passe incorrect</p>";
-        }
-        if ($erreur == "succes") {
-            echo "<p class='green-text'>Connecté!</p>";
-        }
-    }
-
-    public function choixUser($id){
+    
+    public function choixUser($id){ //Fonction retournant les données de l'utilisateur à modifier
         $requeteUserAModifier = $this->_bdd->query("SELECT * FROM user WHERE id_user = ".$id);
         $donneesUserAModifier = $requeteUserAModifier->fetch();
         return $donneesUserAModifier;
     }
 
-    public function champUser($dataUser){
+    public function champUser($dataUser){ //Fonction affichant le formulaire prérempli avec les données de l'utilisateur choisis
         echo "
         <form method='post' action=''>
             <input type='hidden' name='iduser' value='".$dataUser['id_user']."'>
@@ -93,11 +77,11 @@ class Admin
         ";
     }
 
-    public function modifier($id,$email,$nom,$prenom,$droits){
+    public function modifier($id,$email,$nom,$prenom,$droits){ //Fonction modifiant les données de l'utilisateur choisi en base
         $requeteModification = $this->_bdd->query("UPDATE user SET `nom`='".$nom."',`prenom`='".$prenom."',`email`='".$email."',`droit`='".$droits."' WHERE id_user = ".$id);
     }
 
-    public function supprimer($id){
+    public function supprimer($id){ //Fonction supprimant l'utilisateur dans la table user, dans la table d'association et son bateau dans la table bateau
         $requeteSuppressionUser = $this->_bdd->query("DELETE FROM user WHERE id_user = ".$id);
         $requeteRecupIdBateau = $this->_bdd->query("SELECT * FROM `assoc_bateau-user` WHERE id_user = ".$id);
         $donneesAssoc = $requeteRecupIdBateau->fetch();
