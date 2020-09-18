@@ -19,7 +19,7 @@ if(isset($_POST['submitModifier'])){
 <body style="background-image: url('images/background.jpg');background-attachment: fixed;background-position: center center;">
     <nav>
         <div class="nav-wrapper">
-            <a href="" class="brand-logo"><i class="material-icons">directions_boat</i>GeoBoat</a>
+            <a href="tableau_de_bord.php" class="brand-logo"><i class="material-icons">directions_boat</i>GeoBoat</a>
             <ul id="nav-mobile" class="right">
             <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == true && $_SESSION['droits'] == "ADMIN"){ ?>
                 <li><a href="tableau_de_bord.php">Tableau de bord</a></li>
