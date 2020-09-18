@@ -1,5 +1,5 @@
 <?php
-class Register{
+class Register{ //Class pour l'inscription
     private $_email;
     private $_mdp;
     private $_mdpConfirm;
@@ -14,7 +14,7 @@ class Register{
         $this->_prenom = $prenom;
     }
 
-    public function tests(){
+    public function tests(){ //Fonction vérifiant si les champs sont remplis correctement
         if (filter_var($this->_email, FILTER_VALIDATE_EMAIL)) {
             if(!empty($this->_mdp)){
                 if(!empty($this->_nom) && !empty($this->_prenom)){
@@ -23,7 +23,7 @@ class Register{
                         $requeteMail = $bdd->prepare("SELECT * FROM user WHERE email = ?");
                         $requeteMail->execute(array($this->_email));
                         $userExist = $requeteMail->rowCount();
-                        if($userExist == 1){  
+                        if($userExist == 1){  //Test pour savoir si l'email rentré est déjà utilisé
                             return "mailUsed";
                         }
                         else{
@@ -49,7 +49,7 @@ class Register{
         }
     }
 
-    public function erreur($erreur){
+    public function erreur($erreur){ //Fonction affichant le message d'erreur si erreur il y a
         if($erreur == "mdpDifferents"){
             echo "<p class='red-text'>Les deux mots de passes ne correspondent pas</p>";
         }

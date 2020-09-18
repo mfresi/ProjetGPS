@@ -50,7 +50,6 @@
                 <li><a href="presentation.php">Qu'est ce que GeoBoat?</a></li>
                 <li><a href="ekip.php">L'équipe</a></li>
                 <li><a href="contact.php">Contact</a></li>
-                <li><a href="admin.php">Admin</a></li>
                 </ul>
             </div>
         </nav>
@@ -76,26 +75,26 @@
                                     }
                                 ?>
                                 <form action="" method="post">
-                                <div class="input-field center-align">
-                                    <input id="emailLogin" name="emailLogin" type="text" class="validate">
-                                    <label for="emailLogin">E-mail</label>
-                                </div>
-                                <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="mdpLogin" name="mdpLogin" type="password" class="validate">
-                                    <label for="mdpLogin">Mot de passe</label>
-                                </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s6">
-                                        <a style="cursor: pointer;" onclick="displayRegister()">S'inscrire</a>
+                                    <div class="input-field center-align">
+                                        <input id="emailLogin" name="emailLogin" type="text" class="validate">
+                                        <label for="emailLogin">E-mail</label>
                                     </div>
-                                    <div class="col s6 right-align">
-                                        <button class="btn waves-effect waves-light" type="submit" name="submitLogin">Allons-y !
-                                            <i class="material-icons right">send</i>
-                                        </button>
+                                    <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="mdpLogin" name="mdpLogin" type="password" class="validate">
+                                        <label for="mdpLogin">Mot de passe</label>
                                     </div>
-                                </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s6">
+                                            <a style="cursor: pointer;" onclick="displayRegister()">S'inscrire</a>
+                                        </div>
+                                        <div class="col s6 right-align">
+                                            <button class="btn waves-effect waves-light" type="submit" name="submitLogin">Allons-y !
+                                                <i class="material-icons right">send</i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                             <?php
