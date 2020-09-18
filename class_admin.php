@@ -98,6 +98,10 @@ class Admin
     }
 
     public function supprimer($id){
-        $requeteSuppression = $this->_bdd->query("DELETE FROM user WHERE id_user = ".$id);
+        $requeteSuppressionUser = $this->_bdd->query("DELETE FROM user WHERE id_user = ".$id);
+        $requeteRecupIdBateau = $this->_bdd->query("SELECT * FROM `assoc_bateau-user` WHERE id_user = ".$id);
+        $donneesAssoc = $requeteRecupIdBateau->fetch();
+        $requeteSuppressionAssoc = $this->_bdd->query("DELETE FROM `assoc_bateau-user` WHERE id_user = ".$id);
+        $requeteSuppressionBateau = $this->_bdd->query("DELETE FROM bateau WHERE id_bateau = ".$donneesAssoc['id_bateau']);
     }
 }

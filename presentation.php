@@ -14,7 +14,6 @@
                 <li class="active"><a href="">Qu'est ce que GeoBoat?</a></li>
                 <li><a href="ekip.php">L'équipe</a></li>
                 <li><a href="contact.php">Contact</a></li>
-                <li><a href="admin.php">Admin</a></li>
                 </ul>
             </div>
         </nav>
@@ -22,6 +21,9 @@
             <div class="container" style="margin-top : 10%; padding-top : 5%; padding-bottom : 5%; margin-bottom : 10%;">
                 <div class="center-align">
                     <i class="large material-icons">directions_boat</i><h5>Présentation de GeoBoat</h5>
+                    <p>GeoBoat est une application destinée à l'historique de navigation de vehicule maritime, elle est réalisée en septembre 2020 par Mattei Fresi
+                        , Florian Wantelez et Théo Garnon pour un projet de BTS SN2 encadré par leur professeur Julien Langlacé.
+                    </p>
                 </div>
                 
             </div>

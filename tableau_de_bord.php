@@ -30,7 +30,7 @@
 <body style="background-image: url('images/background.jpg');background-attachment: fixed;background-position: center center;">
     <nav>
         <div class="nav-wrapper">
-            <a href="index.php" class="brand-logo"><i class="material-icons">directions_boat</i>GeoBoat</a>
+            <a href="" class="brand-logo"><i class="material-icons">directions_boat</i>GeoBoat</a>
             <ul id="nav-mobile" class="right">
                 <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == true){ ?>
                     <li class="active"><a href="">Tableau de bord</a></li>
@@ -41,7 +41,7 @@
                         }
                     ?>
                     <li><a href="contact.php">Contact</a></li>
-                    <li><a href="">Modifier mon compte</a></li>
+                    <li><a href="modifiercompte.php">Modifier mon compte</a></li>
                     <li><a href="deconnexion.php"><i class="material-icons">power_settings_new</i></a></li>
                     <?php } ?>
             </ul>
@@ -85,9 +85,7 @@
                 </div>
             </div>
             <?php } else {
-                echo "<div class='center-align'>
-                    <h3>Vous vous êtes visiblement perdu, revenez à <a href='index.php'>l'accueil</a></h3>
-                </div>";
+                header('Location: 403.php');
             }?>
     </div>
     <script type="text/javascript" src="js/materialize.min.js"></script>

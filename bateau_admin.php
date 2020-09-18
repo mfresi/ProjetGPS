@@ -1,4 +1,5 @@
 <?php include("class_bateau.php"); 
+    session_start();
     $bateau = new bateau;
 ?>
 <html>
@@ -13,7 +14,7 @@
 <body style="background-image: url('images/background.jpg');background-attachment: fixed;background-position: center center;">
     <nav>
         <div class="nav-wrapper">
-            <a href="index.php" class="brand-logo"><i class="material-icons">directions_boat</i>GeoBoat</a>
+            <a href="tableau_de_bord.php" class="brand-logo"><i class="material-icons">directions_boat</i>GeoBoat</a>
             <ul id="nav-mobile" class="right">
                 <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == true && $_SESSION['droits'] == "ADMIN"){ ?>
                     <li><a href="tableau_de_bord.php">Tableau de bord</a></li>
@@ -21,7 +22,7 @@
                     <li class="active"><a href='admin.php'>Admin</a></li>
                     <li><a href="contact.php">Contact</a></li>
                     <li><a href="">Modifier mon compte</a></li>
-                    <li><a href=""><i class="material-icons">power_settings_new</i></a></li>
+                    <li><a href="deconnexion.php"><i class="material-icons">power_settings_new</i></a></li>
                 <?php } ?>
             </ul>
         </div>
@@ -49,9 +50,7 @@
                 </form>
             </div>
             <?php } else{
-                echo "<div class='center-align'>
-                <h3>Vous vous êtes visiblement perdu, revenez à <a href='index.php'>l'accueil</a></h3>
-                </div>";
+                header('Location: 403.php');
             } ?>
         <?php    
             if(isset($_POST['submitUser'])){

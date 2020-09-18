@@ -24,7 +24,6 @@ if(isset($_POST['submitMail'])){
                 <li><a href="presentation.php">Qu'est ce que GeoBoat?</a></li>
                 <li><a href="ekip.php">L'équipe</a></li>
                 <li class="active"><a href="">Contact</a></li>
-                <li><a href="admin.php">Admin</a></li>
                 </ul>
             </div>
         </nav>
