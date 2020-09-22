@@ -67,11 +67,6 @@
                     </div>
                 </div>
                 <div class='row valign-wrapper center-align'>
-                    <div class='input-field col s6 left-align'>
-                        <button class='btn waves-effect waves-light' type='submit' name='supprimerUser'>Supprimer
-                            <i class='material-icons right'>delete_forever</i>
-                        </button>
-                    </div>
                     <div class='input-field col s6 right-align'>
                         <button class='btn waves-effect waves-light' type='submit' name='modifierUser'>Modifier
                             <i class='material-icons right'>edit</i>
@@ -90,43 +85,61 @@
                 $requeteAncienMail = $this->_bdd->query("SELECT * FROM user WHERE id_user = ".$iduser);
                 $donneesUser = $requeteAncienMail->fetch();
                 if($userExist == 1 && $email != $donneesUser['email']){  //Test pour savoir si l'email rentré est déjà utilisé par un autre utilisateur
-                    echo "<p class='red-text'>Adresse mail déjà utilisée par un autre utilisateur</p>";
+                    return "mailExist";
                 }
                 else{
                     if($checkmdp == "on"){ //Si l'utilisateur a coché la case Modifier le mot de passe
                         if(!empty($mdp) && !empty($confirmmdp)){
                             if($mdp == $confirmmdp){
                                 if($droits == 'ADMIN'){//Si c'est un administrateur on défini les droits selon ce qu'il a choisi
-                                    echo "<p class='green-text'>Modifié avec succès</p>";
                                     $updateDroitEtMdp = $this->_bdd->query("UPDATE user SET `nom`='".$nom."',`prenom`='".$prenom."',`email`='".$email."',`droit`='".$droitsmodif."',`password` = '".$mdp."' WHERE `id_user` = ".$iduser);
+                                    return "succes";
                                 }
                                 else{ //Si c'est un utilisateur normal on ne change pas les droits
-                                    echo "<p class='green-text'>Modifié avec succès</p>";
                                     $updateMdp = $this->_bdd->query("UPDATE user SET `password` = '".$mdp."' `nom`='".$nom."',`prenom`='".$prenom."',`email`='".$email."' WHERE id_user = ".$iduser);
+                                    return "succes";
                                 }   
                             }
                             else{
-                                echo "<p class='red-text'>Les deux mots de passes ne correspondent pas</p>";
+                                return "mdpNoMatch";
                             }
                         }
                         else{
-                            echo "<p class='red-text'>Merci de remplir les champs mot de passe</p>";
+                            return "mdpEmpty";
                         }
                     }
                     else{
                         if($droits == 'ADMIN'){ //Si l'utilisateur ne souhaite pas modifier son mdp et qu'il est admin
                             $updateDroit = $this->_bdd->query("UPDATE user SET `nom`='".$nom."',`prenom`='".$prenom."',`email`='".$email."',`droit`='".$droitsmodif."' WHERE id_user = ".$iduser);
-                            echo "<p class='green-text'>Modifié avec succès</p>";
+                            return "succes";
                         }
                         else{ //Si l'utilisateur ne souhaite pas modifier son mdp et qu'il n'est pas admin
                             $update = $this->_bdd->query("UPDATE user SET `nom`='".$nom."',`prenom`='".$prenom."',`email`='".$email."' WHERE id_user = ".$iduser);
-                            echo "<p class='green-text'>Modifié avec succès</p>";
+                            return "succes";
                         }
                     }
                 }
             }
             else{
-                echo "<p class='red-text'>Merci de rentrer une adresse mail valide</p>";
+                return "mailInvalide";
+            }
+        }
+
+        public function erreur($erreur){ //Fonction affichant l'erreur dans le formulaire si erreur il y a
+            if($erreur == "mailExist"){
+                echo "<p class='red-text'>L'adresse e-mail est déjà utilisée par un autre utilisateur</p>";
+            }
+            if($erreur == "mailInvalide"){
+                echo "<p class='red-text'>L'adresse e-mail est invalide</p>";
+            }
+            if($erreur == "mdpEmpty"){
+                echo "<p class='red-text'>Merci de remplir les champs mot de passe</p>";
+            }
+            if($erreur == "mdpNoMatch"){
+                echo "<p class='red-text'>Les deux mots de passes ne correspondent pas</p>";
+            }
+            if($erreur == "succes"){
+                echo "<p class='green-text'>Modifié avec succès</p>";
             }
         }
     }

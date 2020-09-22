@@ -29,7 +29,7 @@ if(isset($_POST['submitModifier'])){
                 <li><a href="">Documentation</a></li>
                 <li class="active"><a href='admin.php'>Admin</a></li>
                 <li><a href="contact.php">Contact</a></li>
-                <li><a href="">Modifier mon compte</a></li>
+                <li><a href="modifiercompte.php">Modifier mon compte</a></li>
                 <li><a href="deconnexion.php"><i class="material-icons">power_settings_new</i></a></li>
             <?php } ?>
             </ul>
