@@ -78,7 +78,7 @@ if(isset($_POST['submitModifier'])){
             } 
             //Sinon il est redirigé (2/2)
             else{
-                header('Location: 403.php');
+                include('403.php');
             }?>
         </div>
     </div>

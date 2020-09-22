@@ -93,16 +93,16 @@
                     echo "<p class='red-text'>Adresse mail déjà utilisée par un autre utilisateur</p>";
                 }
                 else{
-                    if($checkmdp == true){ //Si l'utilisateur a coché la case Modifier le mot de passe
+                    if($checkmdp == "on"){ //Si l'utilisateur a coché la case Modifier le mot de passe
                         if(!empty($mdp) && !empty($confirmmdp)){
                             if($mdp == $confirmmdp){
                                 if($droits == 'ADMIN'){//Si c'est un administrateur on défini les droits selon ce qu'il a choisi
-                                    $updateDroitEtMdp = $this->_bdd->query("UPDATE user SET `password` = '".$mdp."' `nom`='".$nom."',`prenom`='".$prenom."',`email`='".$email."',`droit`='".$droitsmodif."' WHERE id_user = ".$iduser);
                                     echo "<p class='green-text'>Modifié avec succès</p>";
+                                    $updateDroitEtMdp = $this->_bdd->query("UPDATE user SET `nom`='".$nom."',`prenom`='".$prenom."',`email`='".$email."',`droit`='".$droitsmodif."',`password` = '".$mdp."' WHERE `id_user` = ".$iduser);
                                 }
                                 else{ //Si c'est un utilisateur normal on ne change pas les droits
-                                    $updateMdp = $this->_bdd->query("UPDATE user SET `password` = '".$mdp."' `nom`='".$nom."',`prenom`='".$prenom."',`email`='".$email."' WHERE id_user = ".$iduser);
                                     echo "<p class='green-text'>Modifié avec succès</p>";
+                                    $updateMdp = $this->_bdd->query("UPDATE user SET `password` = '".$mdp."' `nom`='".$nom."',`prenom`='".$prenom."',`email`='".$email."' WHERE id_user = ".$iduser);
                                 }   
                             }
                             else{

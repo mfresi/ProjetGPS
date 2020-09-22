@@ -85,7 +85,7 @@
                 </div>
             </div>
             <?php } else {
-                header('Location: 403.php');
+                include('403.php');
             }?>
     </div>
     <script type="text/javascript" src="js/materialize.min.js"></script>
