@@ -59,7 +59,7 @@
             } 
             //Sinon il est redirigé (2/2)
             else{
-                header('Location: 403.php');
+                include('403.php');
             } ?>
         <?php    
             //Si l'utilisateur appuye sur le bouton Choisir, on execute la fonction afficherBateau qui affichera les données du bateau associé à l'utilisateur choisi

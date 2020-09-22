@@ -1,6 +1,12 @@
 <?php include("class_modif.php"); 
     session_start();
     $modif = new modif;
+    if(isset($_POST['modifierUser'])){
+        if(!isset($_POST['nvxMdp'])){
+            $_POST['nvxMdp'] = false;
+        }
+        $erreur = $modif->modifierUser($_SESSION['id'], $_POST['email'], $_POST['nom'], $_POST['prenom'], $_POST['nvxMdp'], $_POST['mdp'], $_POST['mdpConfirm'], $_SESSION['droits'], $_POST['droits']);
+    }
 ?>
 
 <script type="text/javascript">
@@ -53,15 +59,12 @@
                     <h5>Modifier mon compte</h5>
                 </div>
             <?php 
-                $modif->champUser($_SESSION['id']);
-                if(isset($_POST['modifierUser'])){
-                    if(!isset($_POST['nvxMdp'])){
-                        $_POST['nvxMdp'] = false;
-                    }
-                    $modif->modifierUser($_SESSION['id'], $_POST['email'], $_POST['nom'], $_POST['prenom'], $_POST['nvxMdp'], $_POST['mdp'], $_POST['mdpConfirm'], $_SESSION['droits'], $_POST['droits']);
+                if(isset($erreur)){
+                    $modif->erreur($erreur);
                 }
+                $modif->champUser($_SESSION['id']);
             } else{
-                header('Location: 403.php');
+                include('403.php');
             } ?>
         </div>
     </div>

@@ -25,19 +25,21 @@ if(isset($_POST['submitMail'])){
                      echo "<a href='index.php' class='brand-logo'><i class='material-icons'>directions_boat</i>GeoBoat</a>";
                  } ?>
                 <ul id="nav-mobile" class="right">
-                <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == true){ ?>
-                    <li><a href="tableau_de_bord.php">Tableau de bord</a></li>
-                    <li><a href="">Documentation</a></li>
-                    <?php
-                        if($_SESSION['droits'] == "ADMIN"){
-                            echo "<li><a href='admin.php'>Admin</a></li>";
-                        }
-                    ?>
-                    <li class="active"><a href="contact.php">Contact</a></li>
-                    <li><a href="modifiercompte.php">Modifier mon compte</a></li>
-                    <li><a href="deconnexion.php"><i class="material-icons">power_settings_new</i></a></li>
-                    <?php } else{
+                    <?php 
+                    if(isset($_SESSION['logged']) && $_SESSION['logged'] == true){ ?>
+                        <li><a href="tableau_de_bord.php">Tableau de bord</a></li>
+                        <li><a href="">Documentation</a></li>
+                        <?php
+                            if($_SESSION['droits'] == "ADMIN"){
+                                echo "<li><a href='admin.php'>Admin</a></li>";
+                            }
                         ?>
+                        <li class="active"><a href="contact.php">Contact</a></li>
+                        <li><a href="modifiercompte.php">Modifier mon compte</a></li>
+                        <li><a href="deconnexion.php"><i class="material-icons">power_settings_new</i></a></li>
+                    <?php 
+                    } else{
+                    ?>
                         <li><a href="index.php">Accueil</a></li>
                         <li><a href="presentation.php">Qu'est ce que GeoBoat?</a></li>
                         <li><a href="ekip.php">L'équipe</a></li>
